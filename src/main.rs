@@ -43,4 +43,7 @@ fn main() -> amethyst::Result<()> {
 
 
     Ok(())
+
+    // Left off reading Theory nefore jumping back into example (at Entity & Compentent: Stroage)
+    
 }
