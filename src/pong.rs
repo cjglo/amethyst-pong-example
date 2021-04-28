@@ -32,6 +32,7 @@ impl SimpleState for Pong {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let world = data.world;
         
+        world.register::<Paddle>();
         initialise_paddles(world);
         initialise_camera(world);
     }
