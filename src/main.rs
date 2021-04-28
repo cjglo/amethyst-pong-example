@@ -9,10 +9,9 @@ use amethyst::{
     utils::application_root_dir,
 };
 
+mod pong;
 
-pub struct Pong;
-
-impl SimpleState for Pong { }
+use crate::pong::Pong;
 
 fn main() -> amethyst::Result<()> {
 
