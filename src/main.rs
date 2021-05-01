@@ -9,6 +9,8 @@ use amethyst::{
     utils::application_root_dir,
 };
 
+use amethyst::core::transform::TransformBundle;
+
 mod pong;
 
 use crate::pong::Pong;
@@ -29,8 +31,9 @@ fn main() -> amethyst::Result<()> {
                 .with_clear([0.0, 0.0, 0.0, 1.0]),
             )
             // RednerFlat2D plugin is used to render entities with a 'SpriteRender'
-            .with_plugin(RenderFlat2D::default()),
-        )?;
+            .with_plugin(RenderFlat2D::default())
+        )?
+        .with_bundle(TransformBundle::new())?;
             
 
     let assets_dir = app_root.join("assets");
