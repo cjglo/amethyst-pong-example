@@ -49,10 +49,7 @@ fn main() -> amethyst::Result<()> {
     let mut game = Application::new(assets_dir, Pong, game_data)?;
     game.run();
 
-
-    // ! LEFT OFF AT BUNDLES SECTION
-
+    // TODO: Left off at "Create system to make..." inside "Making Ball move" section
 
     Ok(())
-    
 }
