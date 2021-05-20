@@ -22,7 +22,7 @@ impl<'s> System<'s> for BounceSystem {
             let ball_y = transform.translation().y;
 
             // Handling top or bottom of screen
-            if (ball_y >= ARENA_HEIGHT - ball.radius && ball.velocity[1] > 0.0)
+            if (ball_y <= ball.radius && ball.velocity[1] < 0.0)
                 || (ball_y >= ARENA_HEIGHT - ball.radius && ball.velocity[1] > 0.0)
             {
                 ball.velocity[1] = -ball.velocity[1];
