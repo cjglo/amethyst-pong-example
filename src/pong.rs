@@ -2,7 +2,7 @@ use amethyst::{
     assets::{AssetStorage, Loader, Handle},
     core::transform::Transform,
     core::timing::Time,
-    ecs::{Component, DenseVecStorage},
+    ecs::{Component, DenseVecStorage, Entity},
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
@@ -169,4 +169,17 @@ fn initialise_ball(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
     })
     .with(local_transform)
     .build();
+}
+
+/// ScoreBoard contains the actual score data
+#[derive(Default)]
+pub struct ScoreBoard {
+    pub score_left: i32,
+    pub score_right: i32,
+}
+
+/// ScoreText contains the ui text components that display the score
+pub struct ScoreText {
+    pub p1_score: Entity,
+    pub p2_score: Entity,
 }
