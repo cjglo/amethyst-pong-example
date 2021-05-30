@@ -44,7 +44,6 @@ fn main() -> amethyst::Result<()> {
         )?
         .with_bundle(TransformBundle::new())?
         .with_bundle(input_bundle)?
-        .with_bundle(UiBundle::<StringBindings>::new())?
         .with(systems::PaddleSystem, "paddle_system", &["input_system"])
         .with(systems::MoveBallsSystem, "ball_system", &[])
         .with(
@@ -52,7 +51,9 @@ fn main() -> amethyst::Result<()> {
             "collison_system",
             &["paddle_system", "ball_system"],
         )
-        .with(systems::WinnerSystem, "winner_system", &["ball_system"]);
+        .with(systems::WinnerSystem, "winner_system", &["ball_system"])
+        // using StringBindings here because UiBundle needs to know the types that inoputhandler is using to map actions & axes
+        .with_bundle(UiBundle::<StringBindings>::new())?;
             
 
     let assets_dir = app_root.join("assets");
