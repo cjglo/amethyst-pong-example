@@ -13,12 +13,14 @@ use amethyst::{
 use amethyst::core::transform::TransformBundle;
 use amethyst::input::{InputBundle, StringBindings};
 use amethyst::audio::AudioBundle;
+use amethyst::audio::DjSystemDesc;
 
 mod pong;
 mod systems;
 mod audio;
 
 use crate::pong::Pong;
+use crate::audio::Music;
 
 fn main() -> amethyst::Result<()> {
 
@@ -47,6 +49,11 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(TransformBundle::new())?
         .with_bundle(input_bundle)?
         .with_bundle(AudioBundle::default())?
+        .with_system_desc(
+            DjSystemDesc::new(|music: &mut Music| music.music.next()),
+            "dj_system",
+            &[],
+        )
         .with(systems::PaddleSystem, "paddle_system", &["input_system"])
         .with(systems::MoveBallsSystem, "ball_system", &[])
         .with(

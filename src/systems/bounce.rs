@@ -53,7 +53,7 @@ impl<'s> System<'s> for BounceSystem {
                     || (paddle.side == Side::Right && ball.velocity[0] > 0.0)
                     {
                         ball.velocity[0] = -ball.velocity[0];
-                        // play_bounce_sound(&*sounds, &storage, audio_output.as_deref());
+                        play_bounce_sound(&*sounds, &storage, audio_output.as_deref());
                     }
                 }
             }
